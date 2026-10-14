@@ -5,6 +5,11 @@
 Inspired by "dupe" culture on social media, Dupe Finder is an end-to-end visual search system for fashion. It combines a data pipeline that prepares and embeds a product catalog with a retrieval service that matches a user's photo to the closest catalog items under a price limit.
 
 > 🚧 **Status:** in active development. See the [roadmap](#roadmap) for progress.
+### Early result
+
+FashionCLIP matches by silhouette and style, not just color. Here, a belted wide-leg jumpsuit (left) returns other belted, wide-leg pieces from a 2,000-item H&M sample:
+
+![Similarity search example](assets/similarity_example.png)
 
 ---
 
