@@ -9,7 +9,10 @@ import matplotlib.pyplot as plt
 from PIL import Image
 from transformers import CLIPModel, CLIPProcessor
 
-DATA = "/kaggle/input/h-and-m-personalized-fashion-recommendations"
+import glob
+found = glob.glob("/kaggle/input/*/articles.csv") + glob.glob("/kaggle/input/*/*/articles.csv")
+DATA = os.path.dirname(found[0])
+print("DATA =", DATA)
 N_SAMPLE = 2000          
 BATCH = 64
 device = "cuda" if torch.cuda.is_available() else "cpu"
@@ -48,7 +51,8 @@ with torch.no_grad():
         paths = sample["img"].iloc[start:start + BATCH]
         images = [Image.open(p).convert("RGB") for p in paths]
         inputs = processor(images=images, return_tensors="pt").to(device)
-        feats = model.get_image_features(**inputs)
+        vision_out = model.vision_model(pixel_values=inputs["pixel_values"])
+        feats = model.visual_projection(vision_out.pooler_output)
         feats = feats / feats.norm(dim=-1, keepdim=True)          
         embeddings.append(feats.cpu().numpy())
         if start % 640 == 0:

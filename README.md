@@ -74,10 +74,10 @@ dupe-finder/
 ## Roadmap
 
 - [x] Project setup
-- [ ] Embed catalog sample with FashionCLIP
-- [ ] FAISS index + FastAPI search endpoint with price filter
+- [x] Embed catalog sample with FashionCLIP- [ ] FAISS index + FastAPI search endpoint with price filter
 - [ ] React upload and crop UI
 - [ ] Deploy live demo
+- [ ] Try-on and haul videos from creators (YouTube API, ranked by visual similarity)
 - [ ] Evaluation benchmark (CLIP vs. FashionCLIP vs. baseline)
 - [ ] Scheduled incremental pipeline
 - [ ] Automatic clothing detection (multiple items per photo)
